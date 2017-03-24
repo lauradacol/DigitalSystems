@@ -1,0 +1,64 @@
+$date
+	Fri Mar 24 20:35:03 2017
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module test $end
+$scope module B $end
+$var wire 1 ! e_a $end
+$var wire 1 " e_b $end
+$var wire 1 # e_c $end
+$var wire 1 $ p1_a $end
+$var wire 1 % p1_b $end
+$var wire 1 & p1_c $end
+$var wire 1 ' p2_a $end
+$var wire 1 ( p2_b $end
+$var wire 1 ) p2_c $end
+$var wire 1 * s1 $end
+$var wire 1 + s2 $end
+$var reg 1 , s2_r $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x,
+x+
+x*
+x)
+x(
+x'
+x&
+x%
+x$
+x#
+x"
+x!
+$end
+#2
+1,
+0+
+1*
+0)
+0(
+0'
+0"
+0&
+0!
+0%
+0#
+0$
+#4
+1+
+0*
+1)
+1'
+1!
+1%
+1#
+1$
+#6
