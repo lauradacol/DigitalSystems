@@ -5,7 +5,7 @@ entradas = []
 for i in range(0,numero_entradas):
 	entradas.append(input())
 	
-numero_linhas = (numero_entradas)**2
+numero_linhas = (2)**numero_entradas
 
 valor_inicial = 0
 
