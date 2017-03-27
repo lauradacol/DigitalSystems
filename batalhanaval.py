@@ -56,16 +56,13 @@ def codigo_biluca(jogador_a):
 		
 	lista_decodificada = []
 	for i in saida_binario:
-		lista_decodificada.append(i)
+		lista_decodificada.append(int(i))
 	
-#	print(lista_decodificada)	
 	return lista_decodificada
 
 jogador_a = codigo_biluca(jogada())
-print(jogador_a)
 
 jogador_b = jogada()
-print(jogador_b)
 
 resultado = 0
 
