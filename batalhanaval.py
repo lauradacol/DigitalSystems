@@ -43,20 +43,31 @@ def jogada():
 def codigo_biluca(jogador_a):
 	jogada_decodificada = []
 	
-	for i in range(0, 3):
-		if i+3<=6:
-			jogada_decodificada.insert(i+3,jogador_a[i])
-		else:
-			jogada_decodificada.insert(((i+3)-n), jogador_a[i])	
+	entrada_binario = ''.join(str(i) for i in jogador_a)
+	entrada_decimal = int(entrada_binario,2)
 	
-	print(jogada_decodificada)
-	return jogada_decodificada
+	if entrada_decimal+3<=6:
+		saida_decimal = entrada_decimal+3
+	
+	else:
+		saida_decimal = (entrada_decimal+3)-6
+	
+	saida_binario = bin(saida_decimal)[2:].zfill(3)
+		
+	lista_decodificada = []
+	for i in saida_binario:
+		lista_decodificada.append(i)
+	
+#	print(lista_decodificada)	
+	return lista_decodificada
 
 jogador_a = codigo_biluca(jogada())
+print(jogador_a)
+
 jogador_b = jogada()
+print(jogador_b)
 
 resultado = 0
-
 
 while resultado == 0:
 	
