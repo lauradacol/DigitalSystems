@@ -10,6 +10,9 @@ assign led_out1 = l;
 
 always @(posedge clk_in1) begin
 	contador = contador + 1;
+	
+	//multiplexador
+	// == é um comparador
 	if(contador == 0) begin
 		l = ~l;
 	end
