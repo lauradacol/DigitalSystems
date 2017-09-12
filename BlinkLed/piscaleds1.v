@@ -6,42 +6,30 @@ module piscaleds1(
 
 reg [26:0]contador = 0;
 reg l = 0;
-reg passo = 1;
+reg [5:0] passo = 1;
 
-/*
-assign LEDG[1] = l1; 
-assign LEDG[2] = l;
-assign LEDG[3] = l1; 
-assign LEDG[4] = l;
-assign LEDG[5] = l1; 
-assign LEDG[6] = l;
-assign LEDG[7] = l1; 
-*/
 assign LEDG[0] = l;
 
 
 always @(posedge CLOCK_50) begin
 
-	if(KEY[0]==0) begin
+	if(KEY[0]==1) begin
 		passo = 1;
 	end
 
-	if(KEY[0]==1) begin
-		passo = 100;
+	else begin
+		passo = 5;
 	end
-end
-
-always @(posedge CLOCK_50) begin
-	contador = contador + passo;
 	
-	if(contador == 500) begin
+	if(contador >= 50000000) begin
 		contador = 0;
-	end
-	
-	if(contador == 0) begin
 		l = ~l;
 	end
-
+	
+	else begin
+		contador = contador + passo;
+	end
+		
 end
 
 endmodule
@@ -71,14 +59,3 @@ module testbench;
   end
 
 endmodule
-
-
-
-
-
-
-
-
-
-
-
