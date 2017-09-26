@@ -1,24 +1,18 @@
 module triangleArea(
 	input CLOCK_50,
-	input [0:8]ax,
-	input [0:6]ay,
-	input [0:8]bx,
-	input [0:6]by,	
-	input [0:8]cx,
-	input [0:6]cy,	
+	input [0:10]ax,
+	input [0:10]ay,
+	input [0:10]bx,
+	input [0:10]by,	
+	input [0:10]cx,
+	input [0:10]cy,	
 
-	output [0:13]area
+	output [0:20]area
 );
 
-reg [0:13] l = 0;
+reg [0:20] l = 0;
 assign area = l; 
-
-/*
-def triangleArea(a,b,c):
-	A = (a[0]*b[1]*1)+(a[1]*1*c[0])+(1*b[0]*c[1])
-	B = (a[1]*b[0]*1)+(a[0]*1*c[1])+(1*b[1]*c[0])
-	return abs(A-B)*/
-
+ 
 /*Sempre que o valor de alguma coordenada mudar, recalcular*/
 
 always @(ax or ay or bx or by or cx or cy) begin
@@ -33,13 +27,13 @@ endmodule
 module testbench;
 	
 	reg clk = 0;
-	wire [0:8]ax,
-	wire [0:6]ay,
-	wire [0:8]bx,
-	wire [0:6]by,	
-	wire [0:8]cx,
-	wire [0:6]cy,	
-	wire [0:13]area;
+	wire [0:10]ax,
+	wire [0:10]ay,
+	wire [0:10]bx,
+	wire [0:10]by,	
+	wire [0:10]cx,
+	wire [0:10]cy,	
+	wire [0:20]area;
 	
 	piscaleds1 Leds1(clk, ax, ay, bx, by, cx, cy, area);
 	
