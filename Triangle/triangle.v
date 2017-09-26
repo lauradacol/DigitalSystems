@@ -16,8 +16,8 @@ assign area = l;
 /*Sempre que o valor de alguma coordenada mudar, recalcular*/
 
 always @(ax or ay or bx or by or cx or cy) begin
-	wire A = ((ax*by*1)+(ay*1*cx)+(1*bx*cy));
-	wire B = ((ay*bx*1)+(ax*1*cy)+(1*by*cx));
+	wire A = ((ax*by)+(ay*cx)+(bx*cy));
+	wire B = ((ay*bx)+(ax*cy)+(by*cx));
 	
 	l = A - B;
 end
@@ -27,12 +27,12 @@ endmodule
 module testbench;
 	
 	reg clk = 0;
-	wire [0:10]ax,
-	wire [0:10]ay,
-	wire [0:10]bx,
-	wire [0:10]by,	
-	wire [0:10]cx,
-	wire [0:10]cy,	
+	reg [0:10]ax,
+	reg [0:10]ay,
+	reg [0:10]bx,
+	reg [0:10]by,	
+	reg [0:10]cx,
+	reg [0:10]cy,	
 	wire [0:20]area;
 	
 	piscaleds1 Leds1(clk, ax, ay, bx, by, cx, cy, area);
@@ -41,9 +41,9 @@ module testbench;
 
 	initial begin
     $dumpvars;
-    clk <= 0; ax <= 1; ay <= 82; bx <= 47; by <= 1; cx <= 47; by <=165;    
+    clk <= 0; ax <= 1; ay <= 82; bx <= 47; by <= 1; cx <= 47; cy <=165;    
     #500;
-    clk <= 0; ax <= 1; ay <= 5; bx <= 15; by <= 25; cx <= 3; by <=50;    
+    clk <= 0; ax <= 1; ay <= 5; bx <= 15; by <= 25; cx <= 3; cy <=50;    
     #500;
         
            
