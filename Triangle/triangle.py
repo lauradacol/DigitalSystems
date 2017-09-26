@@ -22,6 +22,7 @@ def checkPoint(a,b,c,p):
 	
 def drawTriangle(a,b,c):
 	rows, columns = os.popen('stty size', 'r').read().split()
+	#print("Linhas: %d\n Colunas: %d\n" % (int(rows), int(columns)));	
 	
 	for i in range(1, int(rows)):
 		for j in range(1,int(columns)):
@@ -40,7 +41,7 @@ def drawTriangle(a,b,c):
 
 os.system('clear')
 
-a = [5,5]
+a = [1,5]
 b = [15,25]
 c = [3,50]
 
@@ -48,5 +49,6 @@ drawTriangle(a,b,c)
 
 p=[50,50]
 print(checkPoint(a,b,c,p))
+print("%d" % triangleArea(a,b,c))
 
 
