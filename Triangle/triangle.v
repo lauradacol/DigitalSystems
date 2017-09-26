@@ -1,29 +1,25 @@
 module triangleArea(
 	input CLOCK_50,
 	input [0:10]ax,
-	input [0:9]ay,
+	input [0:10]ay,
 	input [0:10]bx,
-	input [0:9]by,	
+	input [0:10]by,	
 	input [0:10]cx,
-	input [0:9]cy,	
+	input [0:10]cy,	
 
-	output [0:13]area
+	output [0:20]area
 );
 
-reg [0:13] l = 0;
- 
+reg [0:20] l = 0;
 assign area = l; 
-
-/*
-def triangleArea(a,b,c):
-	A = (a[0]*b[1]*1)+(a[1]*1*c[0])+(1*b[0]*c[1])
-	B = (a[1]*b[0]*1)+(a[0]*1*c[1])+(1*b[1]*c[0])
-	return abs(A-B)*/
-
+ 
 /*Sempre que o valor de alguma coordenada mudar, recalcular*/
 
 always @(ax or ay or bx or by or cx or cy) begin
-	l = ((ax*by)+(ay*cx)+(bx*cy))-((ay*bx)+(ax*cy)+(by*cx));
+	wire A = ((ax*by)+(ay*cx)+(bx*cy));
+	wire B = ((ay*bx)+(ax*cy)+(by*cx));
+	
+	l = A - B;
 end
 
 endmodule
@@ -31,15 +27,15 @@ endmodule
 module testbench;
 	
 	reg clk = 0;
-	reg [0:10]ax;
-	reg [0:9]ay;
-	reg [0:10]bx;
-	reg [0:9]by;	
-	reg [0:10]cx;
-	reg [0:9]cy;	
-	wire [0:13]area;
+	reg [0:10]ax,
+	reg [0:10]ay,
+	reg [0:10]bx,
+	reg [0:10]by,	
+	reg [0:10]cx,
+	reg [0:10]cy,	
+	wire [0:20]area;
 	
-	triangleArea t1(clk, ax, ay, bx, by, cx, cy, area);
+	piscaleds1 Leds1(clk, ax, ay, bx, by, cx, cy, area);
 	
 	always #2 clk = ~clk;
 
