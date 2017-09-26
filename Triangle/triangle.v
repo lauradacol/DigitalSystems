@@ -1,16 +1,17 @@
 module triangleArea(
 	input CLOCK_50,
-	input [0:8]ax,
-	input [0:6]ay,
-	input [0:8]bx,
-	input [0:6]by,	
-	input [0:8]cx,
-	input [0:6]cy,	
+	input [0:10]ax,
+	input [0:9]ay,
+	input [0:10]bx,
+	input [0:9]by,	
+	input [0:10]cx,
+	input [0:9]cy,	
 
 	output [0:13]area
 );
 
 reg [0:13] l = 0;
+ 
 assign area = l; 
 
 /*
@@ -22,10 +23,7 @@ def triangleArea(a,b,c):
 /*Sempre que o valor de alguma coordenada mudar, recalcular*/
 
 always @(ax or ay or bx or by or cx or cy) begin
-	wire A = ((ax*by*1)+(ay*1*cx)+(1*bx*cy));
-	wire B = ((ay*bx*1)+(ax*1*cy)+(1*by*cx));
-	
-	l = A - B;
+	l = ((ax*by)+(ay*cx)+(bx*cy))-((ay*bx)+(ax*cy)+(by*cx));
 end
 
 endmodule
@@ -33,23 +31,23 @@ endmodule
 module testbench;
 	
 	reg clk = 0;
-	wire [0:8]ax,
-	wire [0:6]ay,
-	wire [0:8]bx,
-	wire [0:6]by,	
-	wire [0:8]cx,
-	wire [0:6]cy,	
+	reg [0:10]ax;
+	reg [0:9]ay;
+	reg [0:10]bx;
+	reg [0:9]by;	
+	reg [0:10]cx;
+	reg [0:9]cy;	
 	wire [0:13]area;
 	
-	piscaleds1 Leds1(clk, ax, ay, bx, by, cx, cy, area);
+	triangleArea t1(clk, ax, ay, bx, by, cx, cy, area);
 	
 	always #2 clk = ~clk;
 
 	initial begin
     $dumpvars;
-    clk <= 0; ax <= 1; ay <= 82; bx <= 47; by <= 1; cx <= 47; by <=165;    
+    clk <= 0; ax <= 1; ay <= 82; bx <= 47; by <= 1; cx <= 47; cy <=165;    
     #500;
-    clk <= 0; ax <= 1; ay <= 5; bx <= 15; by <= 25; cx <= 3; by <=50;    
+    clk <= 0; ax <= 1; ay <= 5; bx <= 15; by <= 25; cx <= 3; cy <=50;    
     #500;
         
            
