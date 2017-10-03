@@ -39,15 +39,15 @@ def drawTriangle(a,b,c):
 				print("-", end='')
 		print("")
 
+
 os.system('clear')
 
-a = [1,5]
-b = [15,25]
-c = [3,50]
+a = [1,1]
+b = [1,5]
+c = [5,5]
+p = [14,14]
 
 drawTriangle(a,b,c)
-
-p=[50,50]
 print(checkPoint(a,b,c,p))
 print("%d" % triangleArea(a,b,c))
 
