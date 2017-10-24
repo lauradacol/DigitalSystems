@@ -39,13 +39,12 @@ def drawTriangle(a,b,c):
 				print("-", end='')
 		print("")
 
-
 os.system('clear')
 
 a = [1,1]
 b = [1,5]
 c = [5,5]
-p = [14,14]
+p = [20,20]
 
 drawTriangle(a,b,c)
 print(checkPoint(a,b,c,p))
