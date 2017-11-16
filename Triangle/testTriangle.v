@@ -14,12 +14,12 @@ module testbench;
 	//wire [0:20]area;
 	
 	//triangleArea Leds1(clk, ax, ay, bx, by, cx, cy, area);
-	
 	checkPoint check1(clk, ax, ay, bx, by, cx, cy, px, py, check);
 	
 	integer count;
 
 	initial begin
+		$dumpvars;
 		#2
 		count = $fscanf('h8000_0000, "%d", ax);
 		count = $fscanf('h8000_0000, "%d", ay);
@@ -41,6 +41,7 @@ module testbench;
 		$display("%d", check);
 		#2;
 
+		$finish;
 
 	end	
 endmodule

@@ -15,13 +15,15 @@ module triangleArea(
 
 reg [0:20] l = 0;
 assign area = l; 
+wire [0:20] a = (ax*by)+(ay*cx)+(bx*cy);
+wire [0:20] b = (ay*bx)+(ax*cy)+(by*cx);
+wire signed [0:20] r = a - b;
  
 /*Sempre que o valor de alguma coordenada mudar, recalcular*/
-
 always @(ax or ay or bx or by or cx or cy) begin
 	/*Calcula fazendo o determinante da matriz, atribui o resultado a l que 
 	está amarrado no output area*/
-	l = ((ax*by)+(ay*cx)+(bx*cy)) - ((ay*bx)+(ax*cy)+(by*cx));
+	l = $abs(r);
 end
 	
 endmodule
