@@ -1,7 +1,6 @@
 import os
 import math
 
-
 def triangleArea(a,b,c):
 	A = (a[0]*b[1]*1)+(a[1]*1*c[0])+(1*b[0]*c[1])
 	B = (a[1]*b[0]*1)+(a[0]*1*c[1])+(1*b[1]*c[0])
@@ -41,13 +40,41 @@ def drawTriangle(a,b,c):
 
 os.system('clear')
 
-a = [1,1]
-b = [1,5]
-c = [5,5]
-p = [20,20]
+count = 0;
 
-drawTriangle(a,b,c)
-print(checkPoint(a,b,c,p))
-print("%d" % triangleArea(a,b,c))
+while(count < 50):
+	ax = int(input())
+	ay = int(input())
+	bx = int(input())
+	by = int(input())
+	cx = int(input())			
+	cy = int(input())
+	#px = int(input())
+	#py = int(input())
 
+	a = []
+	b = []
+	c = []
+	p = []
+
+	a.append(ax);
+	a.append(ay);
+	b.append(bx);
+	b.append(by);		
+	c.append(cx);
+	c.append(cy);
+	##p.append(px);
+	##p.append(py);	
+	
+	print("%d" % triangleArea(a,b,c))
+	
+	#drawTriangle(a,b,c)
+	'''
+	if(checkPoint(a,b,c,p) == False):
+		print(0)
+	else:
+		print(1)
+	#print("%d" % triangleArea(a,b,c))
+    '''
+	count += 1
 

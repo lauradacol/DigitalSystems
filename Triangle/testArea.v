@@ -8,13 +8,21 @@ module testbench;
 	reg [0:10]cx;
 	reg [0:10]cy;
 	wire [0:20]area;
+
+	reg [0:6] testes = 0; 
 	
-	triangleArea Leds1(clk, ax, ay, bx, by, cx, cy, area);
+	triangleArea testeArea(clk, ax, ay, bx, by, cx, cy, area);
 	
 	integer count;
 
 	initial begin
-		#2
+		$dumpvars;
+		#2;
+	end	
+		
+	always #2 clk = ~clk;
+		
+	always @(posedge clk) begin
 		count = $fscanf('h8000_0000, "%d", ax);
 		count = $fscanf('h8000_0000, "%d", ay);
 		count = $fscanf('h8000_0000, "%d", bx);
@@ -22,15 +30,14 @@ module testbench;
 		count = $fscanf('h8000_0000, "%d", cx);
 		count = $fscanf('h8000_0000, "%d", cy);
 		#2;
-		$display("%d", ax);
-		$display("%d", ay);
-		$display("%d", bx);
-		$display("%d", by);
-		$display("%d", cx);
-		$display("%d", cy);
 		$display("%d", area);
+		
+		testes = testes + 1;
 		#2;
 
+		if(testes >=50) begin
+			$finish;
+		end
 
 	end	
 endmodule
