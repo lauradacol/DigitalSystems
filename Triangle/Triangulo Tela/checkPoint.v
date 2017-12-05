@@ -1,9 +1,3 @@
-/** Purpose: checar se um ponto está dentro de um triângulo.
- * Input: 8 inputs, correspondendo às coordenadas dos vértices do triângulo 
- * (a, b e c) e ao ponto p. 
- * Output: check. 1 se o ponto p pertence ao triangulo formado pelos pontos
- * a, b e c. 0 se não pertence.
- */	 
 module checkPoint(
 	input CLOCK_50,
 	input [0:10]ax,
