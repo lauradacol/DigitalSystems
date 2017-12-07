@@ -1,5 +1,12 @@
 module triangle (
   	input CLOCK_50,
+	output [17:0] SRAM_ADDR,
+	inout [15:0]  SRAM_DQ,
+	output SRAM_WE_N,
+	output SRAM_OE_N,
+	output SRAM_UB_N ,
+	output SRAM_LB_N,
+	output SRAM_CE_N ,
   	output [3:0] VGA_R,
   	output [3:0] VGA_G,
 	output [3:0] VGA_B,
@@ -12,9 +19,9 @@ reg [9:0]  cy = 0;
 //reg [11:0] c;
 //wire [11:0] c;
 
-assign VGA_R = (v & r) ? 5'hf : 4'b0;
-assign VGA_G = (v & q) ? 9'hf : 4'b0;
-assign VGA_B = v ? 3'hf : 4'b0;
+assign VGA_R = (v & r) ? 4'hf : 4'b0;
+assign VGA_G = (v & q) ? 4'hf : 4'b0;
+assign VGA_B = v ? 4'hf : 4'b0;
 
 //assign VGA_R = r2 ? 4'hf : 4'b0;
 //assign VGA_G = r2 ? 4'hf : 4'b0;
@@ -29,7 +36,26 @@ wire q = (cx >= 300) & (cx < 750) & (cy >= 50) & (cy < 300);
 //meu triangulo
 wire r;
 
-checkPoint Check(CLOCK_50, 200, 20, 80, 75, 337, 53, cx[10:2], cy[9:1], r);
+
+
+//checkPoint Check(CLOCK_50, 200, 20, 80, 75, 337, 53, cx[10:2], cy[9:1], r);
+wire [10:0] px = cx - 285;
+wire [9:0] py = cy - 35;
+
+memoria m1(
+	CLOCK_50,
+	SRAM_ADDR,
+	SRAM_DQ,
+	SRAM_WE_N,
+	SRAM_OE_N,
+	SRAM_UB_N ,
+	SRAM_LB_N,
+	SRAM_CE_N ,
+	px[10:2], 
+	py[9:1],
+	r
+);
+
 
 assign VGA_HS = cx >= 190;
 assign VGA_VS = cy >= 2;

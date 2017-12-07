@@ -6,11 +6,12 @@ module checkPoint(
 	input [8:0]by,	
 	input [8:0]cx,
 	input [8:0]cy,
-	input [8:0]ipx,
-	input [8:0]ipy,		
+	input [8:0]px,
+	input [8:0]py,		
 	output check
 );		
 
+/*
 reg [8:0]px;
 reg [8:0]py;		
 
@@ -27,6 +28,7 @@ always @(posedge CLOCK_50) begin
 		py <= py;
 	end
 end
+*/
 
 reg l;
 assign check = l; 
