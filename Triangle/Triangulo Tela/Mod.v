@@ -1,8 +1,8 @@
 module Mod (
-  input signed [0:20] i,
-  output signed [0:20] o
+  input signed [17:0] i,
+  output signed [17:0] o
   );
 
-  assign o = i[20] ? -i : i;
+  assign o = i[17] ? -i : i;
   
 endmodule

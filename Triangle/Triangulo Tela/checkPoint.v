@@ -1,22 +1,39 @@
 module checkPoint(
 	input CLOCK_50,
-	input [0:10]ax,
-	input [0:10]ay,
-	input [0:10]bx,
-	input [0:10]by,	
-	input [0:10]cx,
-	input [0:10]cy,
-	input [0:10]px,
-	input [0:10]py,		
+	input [8:0]ax,
+	input [8:0]ay,
+	input [8:0]bx,
+	input [8:0]by,	
+	input [8:0]cx,
+	input [8:0]cy,
+	input [8:0]ipx,
+	input [8:0]ipy,		
 	output check
 );		
 
+reg [8:0]px;
+reg [8:0]py;		
+
+reg [5:0] cont = 0;
+
+always @(posedge CLOCK_50) begin
+	cont <= cont + 1;
+	if (cont == 0) begin
+		px <= ipx;
+		py <= ipy;
+	end
+	else begin
+		px <= px;
+		py <= py;
+	end
+end
+
 reg l;
 assign check = l; 
-wire [0:20] triangle;
-wire [0:20] t1;
-wire [0:20] t2;
-wire [0:20] t3;
+wire [17:0] triangle;
+wire [17:0] t1;
+wire [17:0] t2;
+wire [17:0] t3;
 
 /*Calcula a área do triangulo formado pelos pontos a, b e c e atribui à
 variável triangle*/
