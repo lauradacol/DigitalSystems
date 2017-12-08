@@ -11,25 +11,6 @@ module checkPoint(
 	output check
 );		
 
-/*
-reg [8:0]px;
-reg [8:0]py;		
-
-reg [5:0] cont = 0;
-
-always @(posedge CLOCK_50) begin
-	cont <= cont + 1;
-	if (cont == 0) begin
-		px <= ipx;
-		py <= ipy;
-	end
-	else begin
-		px <= px;
-		py <= py;
-	end
-end
-*/
-
 reg l;
 assign check = l; 
 wire [17:0] triangle;
